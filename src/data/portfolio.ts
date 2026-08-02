@@ -68,6 +68,7 @@ export const projects: Project[] = [
       "Engineered an air quality forecasting platform for 3 cities, integrating real-time sensor feeds with 175K+ historical records, iterating through 6 time-series models to optimize pollutant predictions and deploying the most accurate.",
       "Launched an interactive augmented reality web app translating forecasts into 3D molecular visualizations and real-time health risk assessments, achieving 10K+ site visits, a 4.9/5 user score, and $3,000 in funding.",
     ],
+    link: "https://github.com/zoechakra",
   },
   {
     name: "project_two",
