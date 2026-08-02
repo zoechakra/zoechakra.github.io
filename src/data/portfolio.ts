@@ -1,7 +1,6 @@
 export const profile = {
   name: "Zoe Chakraborty",
-  subtitle:
-    "A one-sentence placeholder subtitle: field of study, focus area, and the kind of software you like to put in people's hands.",
+  subtitle: "Computer Science @ Johns Hopkins University",
 };
 
 export const about = [
@@ -10,9 +9,8 @@ export const about = [
 ];
 
 export const aboutFacts: Array<[string, string]> = [
-  ["location", "Placeholder, City"],
-  ["studying", "Placeholder Program"],
-  ["interests", "Placeholder, Placeholder, Placeholder"],
+  ["technical interests", "Placeholder, Placeholder, Placeholder"],
+  ["hobbies", "Placeholder, Placeholder, Placeholder"],
 ];
 
 export type Internship = {
