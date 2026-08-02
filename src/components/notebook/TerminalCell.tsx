@@ -76,15 +76,6 @@ export function TerminalCell() {
         <span className="ml-2 font-mono text-xs text-nb-muted">
           guest@portfolio — zsh
         </span>
-        <button
-          type="button"
-          onClick={toggle}
-          aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-          title={dark ? "Light mode" : "Dark mode"}
-          className="ml-auto inline-flex h-6 w-6 items-center justify-center rounded-sm text-nb-muted transition-colors hover:bg-nb-hover"
-        >
-          {dark ? <Moon size={14} strokeWidth={1.5} /> : <Sun size={14} strokeWidth={1.5} />}
-        </button>
       </div>
 
       <div
