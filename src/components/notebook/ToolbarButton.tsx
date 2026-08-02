@@ -15,7 +15,7 @@ export function ToolbarButton({
       aria-label={label}
       title={label}
       onClick={onClick}
-      className="inline-flex h-7 w-7 items-center justify-center rounded-sm text-nb-toolbar-icon transition-colors hover:bg-nb-hover"
+      className="inline-flex h-7 w-7 items-center justify-center rounded-sm text-nb-toolbar-icon"
     >
       {children}
     </button>
