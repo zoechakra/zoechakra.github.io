@@ -69,6 +69,9 @@
   --color-nb-error: var(--nb-error);
   --color-nb-hover: var(--nb-hover);
   --color-nb-dot: var(--nb-dot);
+  --color-nb-dot-red: var(--nb-dot-red);
+  --color-nb-dot-yellow: var(--nb-dot-yellow);
+  --color-nb-dot-green: var(--nb-dot-green);
   --color-nb-toolbar-icon: var(--nb-toolbar-icon);
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
@@ -118,6 +121,9 @@
   --nb-error: oklch(0.55 0.21 27);
   --nb-hover: oklch(0.92 0 0);
   --nb-dot: oklch(0.84 0 0);
+  --nb-dot-red: oklch(0.68 0.19 22);
+  --nb-dot-yellow: oklch(0.83 0.16 85);
+  --nb-dot-green: oklch(0.76 0.19 145);
   --nb-toolbar-icon: oklch(0.32 0.01 264);
 }
 
@@ -164,6 +170,9 @@
   --nb-error: oklch(0.7 0.18 22);
   --nb-hover: oklch(0.32 0.012 264);
   --nb-dot: oklch(0.42 0.012 264);
+  --nb-dot-red: oklch(0.64 0.19 22);
+  --nb-dot-yellow: oklch(0.79 0.16 85);
+  --nb-dot-green: oklch(0.72 0.18 145);
   --nb-toolbar-icon: oklch(0.88 0.005 264);
 }
 

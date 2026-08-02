@@ -70,9 +70,9 @@ export function TerminalCell() {
   return (
     <div className="overflow-hidden rounded-md border border-nb-border bg-nb-term">
       <div className="flex items-center gap-2 border-b border-nb-border bg-nb-cell px-3 py-2">
-        <span className="h-3 w-3 rounded-full bg-nb-dot" />
-        <span className="h-3 w-3 rounded-full bg-nb-dot" />
-        <span className="h-3 w-3 rounded-full bg-nb-dot" />
+        <span className="h-3 w-3 rounded-full bg-nb-dot-red" />
+        <span className="h-3 w-3 rounded-full bg-nb-dot-yellow" />
+        <span className="h-3 w-3 rounded-full bg-nb-dot-green" />
         <span className="ml-2 font-mono text-xs text-nb-muted">
           guest@portfolio — zsh
         </span>
