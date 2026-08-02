@@ -34,7 +34,7 @@ function aboutLines(): Line[] {
   return [
     ...about.map((p) => ({ text: p })),
     { text: "" },
-    ...aboutFacts.map(([k, v]) => ({ text: `${k.padEnd(11)} ${v}` })),
+    ...aboutFacts.map(([k, v]) => ({ text: `${k.padEnd(21)} ${v}` })),
   ];
 }
 
