@@ -66,7 +66,7 @@ export function runCommand(raw: string): {
 } {
   const input = raw.trim();
   if (!input) return { lines: [] };
-  const [cmd, arg] = input.split(/\s+/);
+  const [cmd = "", arg] = input.split(/\s+/);
 
   switch (cmd.toLowerCase()) {
     case "help":

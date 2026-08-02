@@ -49,13 +49,13 @@ export function TerminalCell() {
       if (history.length) {
         const next = Math.min(cursor + 1, history.length - 1);
         setCursor(next);
-        setValue(history[next]);
+        setValue(history[next] ?? "");
       }
     } else if (e.key === "ArrowDown") {
       e.preventDefault();
       const next = cursor - 1;
       setCursor(next);
-      setValue(next >= 0 ? history[next] : "");
+      setValue(next >= 0 ? (history[next] ?? "") : "");
     } else if (e.key === "l" && e.ctrlKey) {
       e.preventDefault();
       setEntries([]);
