@@ -8,7 +8,7 @@ export function ProjectsOutput() {
           key={project.name}
           className="grid gap-3 rounded-sm border border-nb-border bg-nb-cell p-4 sm:grid-cols-[minmax(9rem,15rem)_1fr] sm:gap-5"
         >
-          <div>
+          <div className="flex h-full flex-col">
             <h3 className="text-nb-accent">{project.name}</h3>
             <p className="mt-1 text-nb-muted">{project.dates}</p>
             <ul className="mt-2 flex flex-wrap gap-1">
@@ -26,7 +26,7 @@ export function ProjectsOutput() {
                 href={project.link}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-2 inline-block text-nb-accent underline"
+                className="mt-3 inline-block self-start text-nb-accent underline sm:mt-auto sm:pt-3"
               >
                 view repo
               </a>
