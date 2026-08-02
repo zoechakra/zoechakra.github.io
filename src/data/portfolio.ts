@@ -29,7 +29,7 @@ export const internships: Internship[] = [
   },
   {
     company: "Royal Bank of Canada",
-    team: "Advice Centre / Branch Technology",
+    team: "Advice Centre/Branch Technology",
     dates: "Jul–Aug 2025",
   },
   {
