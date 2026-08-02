@@ -46,9 +46,10 @@ function internshipLines(): Line[] {
 
 function projectLines(): Line[] {
   return projects.flatMap((p) => [
-    { text: p.name, tone: "accent" as const },
-    { text: `  ${p.blurb}` },
+    { text: `${p.name}  (${p.dates})`, tone: "accent" as const },
+    ...p.bullets.map((b) => ({ text: `  - ${b}` })),
     { text: `  [${p.tags.join(", ")}]`, tone: "muted" as const },
+    { text: "" },
   ]);
 }
 

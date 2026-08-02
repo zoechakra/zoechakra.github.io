@@ -44,30 +44,46 @@ export const internships: Internship[] = [
 
 export type Project = {
   name: string;
-  blurb: string;
+  dates: string;
   tags: string[];
+  bullets: string[];
   link?: string;
 };
 
 export const projects: Project[] = [
   {
-    name: "project_one",
-    blurb:
-      "Placeholder description of a project: the problem it solves and what you built.",
-    tags: ["python", "react", "postgres"],
-    link: "https://github.com/zoechakra/project-one",
+    name: "air_pollutant_forecaster",
+    dates: "2023–2025",
+    tags: [
+      "python",
+      "ml",
+      "three.js",
+      "ar.js",
+      "html",
+      "css",
+      "blender",
+    ],
+    bullets: [
+      "Engineered an air quality forecasting platform for 3 cities, integrating real-time sensor feeds with 175K+ historical records, iterating through 6 time-series models to optimize pollutant predictions and deploying the most accurate.",
+      "Launched an interactive augmented reality web app translating forecasts into 3D molecular visualizations and real-time health risk assessments, achieving 10K+ site visits, a 4.9/5 user score, and $3,000 in funding.",
+    ],
   },
   {
     name: "project_two",
-    blurb:
-      "Placeholder description of a second project, one or two sentences long.",
+    dates: "2025",
     tags: ["typescript", "ml"],
+    bullets: [
+      "Placeholder description of a second project, one or two sentences long.",
+    ],
     link: "https://github.com/zoechakra/project-two",
   },
   {
     name: "project_three",
-    blurb: "Placeholder description of a third project worth showing off.",
+    dates: "2024",
     tags: ["go", "cli"],
+    bullets: [
+      "Placeholder description of a third project worth showing off.",
+    ],
     link: "https://github.com/zoechakra/project-three",
   },
 ];
