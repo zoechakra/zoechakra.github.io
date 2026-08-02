@@ -115,16 +115,25 @@ export function TerminalCell() {
 
         <div className="flex items-center">
           <span className="text-nb-accent">guest@portfolio ~ %</span>
-          <input
-            ref={inputRef}
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            onKeyDown={onKeyDown}
-            aria-label="Terminal input"
-            spellCheck={false}
-            autoComplete="off"
-            className="ml-2 flex-1 bg-transparent font-mono text-[13px] text-foreground caret-nb-accent outline-none"
-          />
+          <div className="relative ml-2 flex-1">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 whitespace-pre font-mono text-[13px] leading-6"
+            >
+              <span className="invisible">{value}</span>
+              <span className="text-nb-muted opacity-70">{ghost}</span>
+            </div>
+            <input
+              ref={inputRef}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onKeyDown={onKeyDown}
+              aria-label="Terminal input"
+              spellCheck={false}
+              autoComplete="off"
+              className="relative w-full bg-transparent font-mono text-[13px] leading-6 text-foreground caret-nb-accent outline-none"
+            />
+          </div>
         </div>
       </div>
     </div>
