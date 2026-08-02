@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { runCommand, WELCOME, type Line } from "@/lib/terminal-commands";
 import { useTheme } from "@/lib/theme";
-import { Moon, Sun } from "lucide-react";
 
 type Entry = { prompt?: string; lines: Line[] };
 
@@ -18,7 +17,7 @@ export function TerminalCell() {
   const [cursor, setCursor] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { dark, toggle, setTheme } = useTheme();
+  const { toggle, setTheme } = useTheme();
 
   useEffect(() => {
     const el = scrollRef.current;
