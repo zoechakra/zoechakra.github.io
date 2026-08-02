@@ -23,6 +23,8 @@ const HELP: Line[] = [
   { text: "  open <target>       open linkedin | github | email | resume" },
   { text: "  theme               toggle dark / light mode" },
   { text: "  clear               clear the screen" },
+  { text: "" },
+  { text: "Tab completes commands; ↑/↓ walks history.", tone: "muted" },
 ];
 
 export const WELCOME: Line[] = [
@@ -59,6 +61,63 @@ function contactLines(): Line[] {
     { text: `LinkedIn: ${contact.linkedinLabel}` },
     { text: `GitHub:   ${contact.githubLabel}` },
   ];
+}
+
+export const COMMANDS = [
+  "help",
+  "about",
+  "internships",
+  "projects",
+  "resume",
+  "contact",
+  "ls",
+  "whoami",
+  "open",
+  "theme",
+  "clear",
+];
+
+const ARGS: Record<string, string[]> = {
+  open: ["linkedin", "github", "email", "resume"],
+  theme: ["dark", "light"],
+};
+
+function commonPrefix(items: string[]): string {
+  if (!items.length) return "";
+  let prefix = items[0] ?? "";
+  for (const item of items) {
+    while (!item.startsWith(prefix)) prefix = prefix.slice(0, -1);
+  }
+  return prefix;
+}
+
+/** Tab-completion: returns the completed input and any ambiguous matches. */
+export function complete(raw: string): { value: string; matches: string[] } {
+  const leading = raw.match(/^\s*/)?.[0] ?? "";
+  const parts = raw.trim().length ? raw.trim().split(/\s+/) : [""];
+  const endsWithSpace = /\s$/.test(raw) && raw.trim().length > 0;
+  const [cmd = ""] = parts;
+
+  if (parts.length === 1 && !endsWithSpace) {
+    const matches = COMMANDS.filter((c) => c.startsWith(cmd.toLowerCase()));
+    if (!matches.length) return { value: raw, matches: [] };
+    const completed = matches.length === 1 ? `${matches[0]} ` : commonPrefix(matches);
+    return {
+      value: leading + completed,
+      matches: matches.length > 1 ? matches : [],
+    };
+  }
+
+  const options = ARGS[cmd.toLowerCase()];
+  if (!options) return { value: raw, matches: [] };
+  const partial = endsWithSpace ? "" : (parts[1] ?? "");
+  const matches = options.filter((o) => o.startsWith(partial.toLowerCase()));
+  if (!matches.length) return { value: raw, matches: [] };
+  const completed = matches.length === 1 ? matches[0] : commonPrefix(matches);
+  return {
+    value: `${leading}${cmd} ${completed}`,
+    matches: matches.length > 1 ? matches : [],
+  };
 }
 
 export function runCommand(raw: string): {
