@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 export function ToolbarButton({
   label,
   onClick,
-  hover = false,
+  hover = true,
   children,
 }: {
   label: string;
