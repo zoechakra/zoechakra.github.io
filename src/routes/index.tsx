@@ -30,14 +30,15 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <NotebookChrome>
-      <header className="mb-10 border-b border-nb-border pb-8">
-        <h1 className="text-4xl font-bold tracking-tight text-foreground">
+      <header className="mb-8 border-b border-nb-border pb-6 sm:mb-10 sm:pb-8">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           {profile.name}
         </h1>
-        <p className="mt-3 max-w-2xl text-lg leading-7 text-nb-muted">
+        <p className="mt-3 max-w-2xl text-base leading-7 text-nb-muted sm:text-lg lg:text-xl lg:leading-8">
           {profile.subtitle}
         </p>
       </header>
+
 
       <Cell index={1} source={"!zsh  # interactive — type `help`"}>
         <TerminalCell />
