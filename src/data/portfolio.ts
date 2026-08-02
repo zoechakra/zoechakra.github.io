@@ -9,9 +9,9 @@ export const about = [
 ];
 
 export const aboutFacts: Array<[string, string]> = [
-  ["technical interests", "Placeholder, Placeholder, Placeholder"],
+  ["technical interests", "full stack development, agentic AI"],
   ["currently studying", "C, C++, .NET"],
-  ["hobbies", "Placeholder, Placeholder, Placeholder"],
+  ["hobbies", "reading, driving, hiking"],
 ];
 
 export type Internship = {
