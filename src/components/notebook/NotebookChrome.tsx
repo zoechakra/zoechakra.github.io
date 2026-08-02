@@ -114,9 +114,6 @@ export function NotebookChrome({ children }: { children: React.ReactNode }) {
               <FastForward size={16} strokeWidth={1} fill="currentColor" />
             </ToolbarButton>
           </div>
-          <span className="rounded-sm border border-nb-border px-2 py-0.5 font-mono text-xs text-nb-muted">
-            Markdown ▾
-          </span>
         </div>
       </header>
 
