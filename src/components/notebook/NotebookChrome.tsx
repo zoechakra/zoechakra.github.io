@@ -48,6 +48,7 @@ export function NotebookChrome({ children }: { children: React.ReactNode }) {
             <ToolbarButton
               label={dark ? "Light theme" : "Dark theme"}
               onClick={toggle}
+              hover
             >
               {dark ? (
                 <Moon size={16} strokeWidth={1.5} />
