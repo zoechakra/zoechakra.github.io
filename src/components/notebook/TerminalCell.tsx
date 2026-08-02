@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { runCommand, WELCOME, type Line } from "@/lib/terminal-commands";
+import { complete, runCommand, WELCOME, type Line } from "@/lib/terminal-commands";
 import { useTheme } from "@/lib/theme";
 
 type Entry = { prompt?: string; lines: Line[] };
@@ -60,6 +60,16 @@ export function TerminalCell() {
       const next = cursor - 1;
       setCursor(next);
       setValue(next >= 0 ? (history[next] ?? "") : "");
+    } else if (e.key === "Tab") {
+      e.preventDefault();
+      const { value: completed, matches } = complete(value);
+      setValue(completed);
+      if (matches.length) {
+        setEntries((en) => [
+          ...en,
+          { prompt: value, lines: [{ text: matches.join("   "), tone: "muted" }] },
+        ]);
+      }
     } else if (e.key === "l" && e.ctrlKey) {
       e.preventDefault();
       setEntries([]);

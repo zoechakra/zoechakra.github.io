@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 
 export function Cell({
   index,
@@ -9,20 +10,64 @@ export function Cell({
   source: string;
   children?: ReactNode;
 }) {
+  const [open, setOpen] = useState(true);
+
   return (
     <section className="mb-8">
       <div className="flex gap-3 sm:gap-4">
-        <div className="hidden w-14 shrink-0 pt-2.5 text-right font-mono text-xs text-nb-accent sm:block">
-          [{index}]:
+        <div className="hidden w-14 shrink-0 items-start justify-end gap-1 pt-2.5 font-mono text-xs text-nb-accent sm:flex">
+          {children ? (
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-label={open ? "Collapse cell output" : "Expand cell output"}
+              aria-expanded={open}
+              title={open ? "Collapse output" : "Expand output"}
+              className="inline-flex h-4 w-4 items-center justify-center rounded-sm text-nb-muted transition-colors hover:bg-nb-hover"
+            >
+              {open ? (
+                <ChevronDown size={12} strokeWidth={1.5} />
+              ) : (
+                <ChevronRight size={12} strokeWidth={1.5} />
+              )}
+            </button>
+          ) : null}
+          <span>[{index}]:</span>
         </div>
         <pre className="flex-1 overflow-x-auto rounded-sm border border-nb-border bg-nb-cell px-4 py-2.5 font-mono text-[13px] leading-6 text-foreground">
           <code>{source}</code>
         </pre>
       </div>
+
       {children ? (
         <div className="mt-3 flex gap-3 sm:gap-4">
           <div className="hidden w-14 shrink-0 sm:block" />
-          <div className="min-w-0 flex-1">{children}</div>
+          <div className="min-w-0 flex-1">
+            {open ? (
+              children
+            ) : (
+              <button
+                type="button"
+                onClick={() => setOpen(true)}
+                className="flex w-full items-center gap-2 rounded-sm border border-dashed border-nb-border px-3 py-1.5 text-left font-mono text-xs text-nb-muted transition-colors hover:bg-nb-hover"
+              >
+                <ChevronRight size={12} strokeWidth={1.5} />
+                output collapsed — click to expand
+              </button>
+            )}
+          </div>
+        </div>
+      ) : null}
+
+      {children ? (
+        <div className="mt-2 sm:hidden">
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="font-mono text-xs text-nb-muted underline"
+          >
+            {open ? "collapse output" : "expand output"}
+          </button>
         </div>
       ) : null}
     </section>
