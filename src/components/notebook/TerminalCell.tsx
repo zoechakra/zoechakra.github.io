@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { complete, runCommand, WELCOME, type Line } from "@/lib/terminal-commands";
+import { complete, runCommand, suggest, WELCOME, type Line } from "@/lib/terminal-commands";
 import { useTheme } from "@/lib/theme";
 
 type Entry = { prompt?: string; lines: Line[] };
@@ -18,6 +18,7 @@ export function TerminalCell() {
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { toggle, setTheme } = useTheme();
+  const ghost = suggest(value);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -60,8 +61,12 @@ export function TerminalCell() {
       const next = cursor - 1;
       setCursor(next);
       setValue(next >= 0 ? (history[next] ?? "") : "");
-    } else if (e.key === "Tab") {
+    } else if (e.key === "Tab" || (e.key === "ArrowRight" && ghost)) {
       e.preventDefault();
+      if (ghost) {
+        setValue(value + ghost);
+        return;
+      }
       const { value: completed, matches } = complete(value);
       setValue(completed);
       if (matches.length) {
@@ -115,16 +120,25 @@ export function TerminalCell() {
 
         <div className="flex items-center">
           <span className="text-nb-accent">guest@portfolio ~ %</span>
-          <input
-            ref={inputRef}
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            onKeyDown={onKeyDown}
-            aria-label="Terminal input"
-            spellCheck={false}
-            autoComplete="off"
-            className="ml-2 flex-1 bg-transparent font-mono text-[13px] text-foreground caret-nb-accent outline-none"
-          />
+          <div className="relative ml-2 flex-1">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 whitespace-pre font-mono text-[13px] leading-6"
+            >
+              <span className="invisible">{value}</span>
+              <span className="text-nb-muted opacity-70">{ghost}</span>
+            </div>
+            <input
+              ref={inputRef}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onKeyDown={onKeyDown}
+              aria-label="Terminal input"
+              spellCheck={false}
+              autoComplete="off"
+              className="relative w-full bg-transparent font-mono text-[13px] leading-6 text-foreground caret-nb-accent outline-none"
+            />
+          </div>
         </div>
       </div>
     </div>

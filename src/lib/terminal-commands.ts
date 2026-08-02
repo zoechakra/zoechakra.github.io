@@ -120,6 +120,26 @@ export function complete(raw: string): { value: string; matches: string[] } {
   };
 }
 
+/** Inline "ghost" suggestion: the remaining characters of the best match. */
+export function suggest(raw: string): string {
+  if (!raw || /^\s*$/.test(raw)) return "";
+  const parts = raw.trim().split(/\s+/);
+  const endsWithSpace = /\s$/.test(raw);
+  const [cmd = ""] = parts;
+
+  if (parts.length === 1 && !endsWithSpace) {
+    const match = COMMANDS.find((c) => c.startsWith(cmd.toLowerCase()));
+    return match && match !== cmd.toLowerCase() ? match.slice(cmd.length) : "";
+  }
+
+  const options = ARGS[cmd.toLowerCase()];
+  if (!options || parts.length > 2) return "";
+  const partial = endsWithSpace ? "" : (parts[1] ?? "");
+  const match = options.find((o) => o.startsWith(partial.toLowerCase()));
+  if (!match) return "";
+  return match.slice(partial.length);
+}
+
 export function runCommand(raw: string): {
   lines: Line[];
   clear?: boolean;
