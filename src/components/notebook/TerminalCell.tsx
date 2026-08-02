@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { complete, runCommand, WELCOME, type Line } from "@/lib/terminal-commands";
+import { complete, runCommand, suggest, WELCOME, type Line } from "@/lib/terminal-commands";
 import { useTheme } from "@/lib/theme";
 
 type Entry = { prompt?: string; lines: Line[] };
@@ -18,6 +18,7 @@ export function TerminalCell() {
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { toggle, setTheme } = useTheme();
+  const ghost = suggest(value);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -60,8 +61,12 @@ export function TerminalCell() {
       const next = cursor - 1;
       setCursor(next);
       setValue(next >= 0 ? (history[next] ?? "") : "");
-    } else if (e.key === "Tab") {
+    } else if (e.key === "Tab" || (e.key === "ArrowRight" && ghost)) {
       e.preventDefault();
+      if (ghost) {
+        setValue(value + ghost);
+        return;
+      }
       const { value: completed, matches } = complete(value);
       setValue(completed);
       if (matches.length) {
