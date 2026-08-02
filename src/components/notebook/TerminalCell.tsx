@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { runCommand, WELCOME, type Line } from "@/lib/terminal-commands";
+import { useTheme } from "@/lib/theme";
+import { Moon, Sun } from "lucide-react";
 
 type Entry = { prompt?: string; lines: Line[] };
 
@@ -16,6 +18,7 @@ export function TerminalCell() {
   const [cursor, setCursor] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { dark, toggle, setTheme } = useTheme();
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -35,6 +38,8 @@ export function TerminalCell() {
     } else {
       setEntries((e) => [...e, { prompt: raw, lines: result.lines }]);
     }
+    if (result.theme === "toggle") toggle();
+    else if (result.theme) setTheme(result.theme === "dark");
     if (result.openUrl) {
       window.open(result.openUrl, "_blank", "noopener,noreferrer");
     }
@@ -71,6 +76,15 @@ export function TerminalCell() {
         <span className="ml-2 font-mono text-xs text-nb-muted">
           guest@portfolio — zsh
         </span>
+        <button
+          type="button"
+          onClick={toggle}
+          aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+          title={dark ? "Light mode" : "Dark mode"}
+          className="ml-auto inline-flex h-6 w-6 items-center justify-center rounded-sm text-nb-muted"
+        >
+          {dark ? <Moon size={14} strokeWidth={1.5} /> : <Sun size={14} strokeWidth={1.5} />}
+        </button>
       </div>
 
       <div

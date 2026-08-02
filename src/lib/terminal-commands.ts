@@ -21,6 +21,7 @@ const HELP: Line[] = [
   { text: "  ls            list notebook sections" },
   { text: "  whoami        current user" },
   { text: "  open <target> open linkedin | github | email | resume" },
+  { text: "  theme         toggle dark / light mode" },
   { text: "  clear         clear the screen" },
 ];
 
@@ -63,6 +64,7 @@ export function runCommand(raw: string): {
   lines: Line[];
   clear?: boolean;
   openUrl?: string;
+  theme?: "dark" | "light" | "toggle";
 } {
   const input = raw.trim();
   if (!input) return { lines: [] };
@@ -97,6 +99,18 @@ export function runCommand(raw: string): {
       };
     case "whoami":
       return { lines: [{ text: "guest" }] };
+    case "theme": {
+      const mode = (arg ?? "").toLowerCase();
+      if (mode === "dark" || mode === "light") {
+        return { lines: [{ text: `theme set to ${mode}`, tone: "muted" }], theme: mode };
+      }
+      if (mode) {
+        return {
+          lines: [{ text: "theme: usage — theme [dark|light]", tone: "error" }],
+        };
+      }
+      return { lines: [{ text: "toggling theme...", tone: "muted" }], theme: "toggle" };
+    }
     case "clear":
       return { lines: [], clear: true };
     case "open": {

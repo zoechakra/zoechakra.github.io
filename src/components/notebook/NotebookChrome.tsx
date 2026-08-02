@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   Plus,
   Scissors,
@@ -12,6 +11,7 @@ import {
   Moon,
 } from "lucide-react";
 import { ToolbarButton } from "./ToolbarButton";
+import { useTheme } from "@/lib/theme";
 
 function SaveIcon() {
   return (
@@ -26,9 +26,6 @@ function SaveIcon() {
     </svg>
   );
 }
-
-import { useTheme } from "@/lib/theme";
-
 
 export function NotebookChrome({ children }: { children: React.ReactNode }) {
   const { dark, toggle } = useTheme();
