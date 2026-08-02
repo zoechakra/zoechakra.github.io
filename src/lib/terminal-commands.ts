@@ -20,7 +20,7 @@ const HELP: Line[] = [
   { text: "  contact             how to reach me" },
   { text: "  ls                  list notebook sections" },
   { text: "  whoami              current user" },
-  { text: "  open <target> open linkedin | github | email | resume" },
+  { text: "  open <target>       open linkedin | github | email | resume" },
   { text: "  theme               toggle dark / light mode" },
   { text: "  clear               clear the screen" },
 ];
