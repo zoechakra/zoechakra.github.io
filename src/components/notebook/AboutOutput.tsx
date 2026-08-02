@@ -11,7 +11,7 @@ export function AboutOutput() {
       <dl className="mt-4 space-y-1">
         {aboutFacts.map(([k, v]) => (
           <div key={k} className="flex gap-3">
-            <dt className="w-24 shrink-0 text-nb-muted">{k}</dt>
+            <dt className="w-44 shrink-0 text-nb-muted">{k}</dt>
             <dd className="text-foreground">{v}</dd>
           </div>
         ))}
