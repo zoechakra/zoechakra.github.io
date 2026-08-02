@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   Plus,
   Scissors,
@@ -12,6 +11,7 @@ import {
   Moon,
 } from "lucide-react";
 import { ToolbarButton } from "./ToolbarButton";
+import { useTheme } from "@/lib/theme";
 
 function SaveIcon() {
   return (
@@ -25,32 +25,6 @@ function SaveIcon() {
       <path d="M4 3h13.2L21 6.8V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4a1 1 0 0 1 1-1Zm8 9.2a2.6 2.6 0 1 0 0 5.2 2.6 2.6 0 0 0 0-5.2ZM6.5 5.2v3.4h9V5.2h-9Z" />
     </svg>
   );
-}
-
-function useTheme() {
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    const stored = window.localStorage.getItem("nb-theme");
-    const prefers =
-      stored === "dark" ||
-      (stored === null &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    setDark(prefers);
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-  }, [dark]);
-
-  const toggle = () => {
-    setDark((prev) => {
-      window.localStorage.setItem("nb-theme", prev ? "light" : "dark");
-      return !prev;
-    });
-  };
-
-  return { dark, toggle };
 }
 
 export function NotebookChrome({ children }: { children: React.ReactNode }) {
