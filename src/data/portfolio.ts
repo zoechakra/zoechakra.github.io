@@ -55,17 +55,20 @@ export const projects: Project[] = [
     blurb:
       "Placeholder description of a project: the problem it solves and what you built.",
     tags: ["python", "react", "postgres"],
+    link: "https://github.com/zoechakra/project-one",
   },
   {
     name: "project_two",
     blurb:
       "Placeholder description of a second project, one or two sentences long.",
     tags: ["typescript", "ml"],
+    link: "https://github.com/zoechakra/project-two",
   },
   {
     name: "project_three",
     blurb: "Placeholder description of a third project worth showing off.",
     tags: ["go", "cli"],
+    link: "https://github.com/zoechakra/project-three",
   },
 ];
 
