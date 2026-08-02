@@ -27,31 +27,8 @@ function SaveIcon() {
   );
 }
 
-function useTheme() {
-  const [dark, setDark] = useState(false);
+import { useTheme } from "@/lib/theme";
 
-  useEffect(() => {
-    const stored = window.localStorage.getItem("nb-theme");
-    const prefers =
-      stored === "dark" ||
-      (stored === null &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    setDark(prefers);
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-  }, [dark]);
-
-  const toggle = () => {
-    setDark((prev) => {
-      window.localStorage.setItem("nb-theme", prev ? "light" : "dark");
-      return !prev;
-    });
-  };
-
-  return { dark, toggle };
-}
 
 export function NotebookChrome({ children }: { children: React.ReactNode }) {
   const { dark, toggle } = useTheme();
