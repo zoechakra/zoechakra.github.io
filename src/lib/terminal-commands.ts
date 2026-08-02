@@ -12,17 +12,17 @@ export type Line = { text: string; tone?: "accent" | "muted" | "error" };
 
 const HELP: Line[] = [
   { text: "Available commands:", tone: "muted" },
-  { text: "  help          show this message" },
-  { text: "  about         who I am" },
-  { text: "  internships   where I've worked" },
-  { text: "  projects      what I've built" },
-  { text: "  resume        link to my resume" },
-  { text: "  contact       how to reach me" },
-  { text: "  ls            list notebook sections" },
-  { text: "  whoami        current user" },
-  { text: "  open <target> open linkedin | github | email | resume" },
-  { text: "  theme         toggle dark / light mode" },
-  { text: "  clear         clear the screen" },
+  { text: "  help                show this message" },
+  { text: "  about               who I am" },
+  { text: "  internships         where I've worked" },
+  { text: "  projects            what I've built" },
+  { text: "  resume              link to my resume" },
+  { text: "  contact             how to reach me" },
+  { text: "  ls                  list notebook sections" },
+  { text: "  whoami              current user" },
+  { text: "  open <target>       open linkedin | github | email | resume" },
+  { text: "  theme               toggle dark / light mode" },
+  { text: "  clear               clear the screen" },
 ];
 
 export const WELCOME: Line[] = [
