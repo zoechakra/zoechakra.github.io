@@ -23,12 +23,12 @@ export function Cell({
               aria-label={open ? "Collapse cell output" : "Expand cell output"}
               aria-expanded={open}
               title={open ? "Collapse output" : "Expand output"}
-              className="inline-flex h-4 w-4 items-center justify-center rounded-sm text-nb-muted transition-colors hover:bg-nb-hover"
+              className="inline-flex h-5 w-5 items-center justify-center rounded-sm text-foreground transition-colors hover:bg-nb-hover"
             >
               {open ? (
-                <ChevronDown size={12} strokeWidth={1.5} />
+                <ChevronDown size={16} strokeWidth={2.25} />
               ) : (
-                <ChevronRight size={12} strokeWidth={1.5} />
+                <ChevronRight size={16} strokeWidth={2.25} />
               )}
             </button>
           ) : null}
@@ -51,7 +51,7 @@ export function Cell({
                 onClick={() => setOpen(true)}
                 className="flex w-full items-center gap-2 rounded-sm border border-dashed border-nb-border px-3 py-1.5 text-left font-mono text-xs text-nb-muted transition-colors hover:bg-nb-hover"
               >
-                <ChevronRight size={12} strokeWidth={1.5} />
+                <ChevronRight size={14} strokeWidth={2.25} />
                 output collapsed — click to expand
               </button>
             )}
