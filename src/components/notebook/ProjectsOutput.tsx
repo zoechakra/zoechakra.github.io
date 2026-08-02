@@ -1,3 +1,5 @@
+import { ArrowUpRight } from "lucide-react";
+
 import { projects } from "@/data/portfolio";
 
 export function ProjectsOutput() {
@@ -26,9 +28,10 @@ export function ProjectsOutput() {
                 href={project.link}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 inline-block self-start text-nb-accent underline sm:mt-auto sm:pt-3"
+                className="mt-3 inline-flex items-center gap-1 self-start text-nb-accent underline sm:mt-auto sm:pt-3"
               >
                 view repo
+                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
               </a>
             ) : null}
           </div>
