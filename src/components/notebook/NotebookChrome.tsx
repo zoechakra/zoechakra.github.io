@@ -32,11 +32,20 @@ function goToNextSection() {
     document.querySelectorAll<HTMLElement>("[data-nb-cell]"),
   );
   if (cells.length === 0) return;
-  const threshold = 90;
-  const next =
-    cells.find((el) => el.getBoundingClientRect().top > threshold) ?? cells[0];
-  next?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const threshold = 120;
+  // current section = last cell whose top is at/above the threshold line
+  let currentIndex = -1;
+  cells.forEach((el, i) => {
+    if (el.getBoundingClientRect().top <= threshold) currentIndex = i;
+  });
+  const nextIndex = currentIndex + 1;
+  const atBottom =
+    window.innerHeight + window.scrollY >=
+    document.documentElement.scrollHeight - 4;
+  const target = nextIndex < cells.length && !atBottom ? cells[nextIndex] : cells[0];
+  target?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
+
 
 export function NotebookChrome({ children }: { children: React.ReactNode }) {
   const { dark, toggle } = useTheme();
