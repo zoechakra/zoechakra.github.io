@@ -4,7 +4,7 @@ export const profile = {
 };
 
 export const about = [
-  "Placeholder bio paragraph one. A couple of sentences about who you are, what you study, and the kinds of problems you like working on.",
+  "I'm Zoe, it's nice to meet you! I'm studying Computer Science at Johns Hopkins University.",
   "Placeholder bio paragraph two. What you're currently exploring, tools you reach for, and what you're looking for next.",
 ];
 
