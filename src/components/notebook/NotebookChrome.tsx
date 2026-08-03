@@ -27,6 +27,17 @@ function SaveIcon() {
   );
 }
 
+function goToNextSection() {
+  const cells = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-nb-cell]"),
+  );
+  if (cells.length === 0) return;
+  const threshold = 90;
+  const next =
+    cells.find((el) => el.getBoundingClientRect().top > threshold) ?? cells[0];
+  next.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 export function NotebookChrome({ children }: { children: React.ReactNode }) {
   const { dark, toggle } = useTheme();
 
