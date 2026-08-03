@@ -1,3 +1,5 @@
+import airPollutantAsset from "@/assets/air-pollutant-forecaster.png.asset.json";
+
 export const profile = {
   name: "Zoe Chakraborty",
   subtitle: "Computer Science @ Johns Hopkins University",
