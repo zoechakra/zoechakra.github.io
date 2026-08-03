@@ -72,7 +72,7 @@ export const projects: Project[] = [
   {
     name: "WeatherBench_tutorials",
     dates: "2022",
-    tags: ["python", "ml","data science","climate science "],
+    tags: ["python", "ml","data science","climate science"],
     bullets: [
       "Authored 2 tutorials on climate data analysis (Xarray, pandas, sckitlearn and numpy) and geospatial visualization (Matplotlib, Basemap, Seaborn and CliMetLab), adopted as course material for 150+ third-year students.",
     ],
