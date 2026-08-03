@@ -49,9 +49,6 @@ export type Project = {
   tags: string[];
   bullets: string[];
   link?: string;
-  /** Optional thumbnail: an imported image or a URL. Alt text via imageAlt. */
-  image?: string;
-  imageAlt?: string;
 };
 
 export const projects: Project[] = [
