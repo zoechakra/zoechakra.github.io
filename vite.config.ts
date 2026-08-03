@@ -16,14 +16,14 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    ...(staticExport
+      ? {
+          prerender: { enabled: true, crawlLinks: true },
+          pages: [{ path: "/", prerender: { enabled: true } }],
+        }
+      : {}),
   },
   ...(staticExport
-    ? {
-        vite: { base: basePath },
-        nitro: {
-          preset: "static",
-          prerender: { routes: ["/"], crawlLinks: true, failOnError: false },
-        },
-      }
+    ? { vite: { base: basePath }, nitro: { preset: "static" } }
     : {}),
 });
