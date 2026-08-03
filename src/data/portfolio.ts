@@ -76,7 +76,7 @@ export const projects: Project[] = [
     bullets: [
       "Authored 2 tutorials on climate data analysis (Xarray, pandas, sckitlearn and numpy) and geospatial visualization (Matplotlib, Basemap, Seaborn and CliMetLab), adopted as course material for 150+ third-year students.",
     ],
-    link: "hhttps://github.com/zoechakra/Climate-Dataset-Tutorials",
+    link: "https://github.com/zoechakra/Climate-Dataset-Tutorials",
   },
 ];
 
