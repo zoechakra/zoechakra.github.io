@@ -10,7 +10,7 @@ export const about = [
 
 export const aboutFacts: Array<[string, string]> = [
   ["technical interests", "full stack development, agentic AI"],
-  ["currently studying", "C, C++, .NET"],
+  ["currently studying", "C, C++, ASP.NET Core"],
   ["hobbies", "reading, driving, hiking"],
 ];
 
