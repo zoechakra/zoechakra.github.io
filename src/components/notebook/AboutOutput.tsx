@@ -4,7 +4,7 @@ export function AboutOutput() {
   return (
     <div className="font-mono text-[13px] leading-6">
       {about.map((p, i) => (
-        <p key={i} className="mb-3 max-w-2xl whitespace-pre-wrap text-foreground">
+        <p key={i} className="mb-3 whitespace-pre-wrap text-foreground">
           {p}
         </p>
       ))}
