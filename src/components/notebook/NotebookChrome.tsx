@@ -85,7 +85,7 @@ export function NotebookChrome({ children }: { children: React.ReactNode }) {
             <ToolbarButton label="Restart kernel">
               <RotateCw size={16} strokeWidth={1.5} />
             </ToolbarButton>
-            <ToolbarButton label="Restart and run all">
+            <ToolbarButton label="Go to next section" onClick={goToNextSection}>
               <FastForward size={16} strokeWidth={1} fill="currentColor" />
             </ToolbarButton>
           </div>
