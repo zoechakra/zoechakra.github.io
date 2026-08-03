@@ -8,8 +8,13 @@ export function ProjectsOutput() {
       {projects.map((project) => (
         <article
           key={project.name}
-          className="grid gap-3 rounded-sm border border-nb-border bg-nb-cell p-4 sm:grid-cols-[minmax(9rem,15rem)_1fr] sm:gap-5"
+          className={`grid gap-3 rounded-sm border border-nb-border bg-nb-cell p-4 sm:gap-5 ${
+            project.image
+              ? "sm:grid-cols-[minmax(9rem,13rem)_1fr_minmax(8rem,12rem)]"
+              : "sm:grid-cols-[minmax(9rem,15rem)_1fr]"
+          }`}
         >
+
           <div className="flex h-full flex-col">
             <h3 className="text-nb-accent">{project.name}</h3>
             <p className="mt-1 text-nb-muted">{project.dates}</p>
@@ -44,6 +49,16 @@ export function ProjectsOutput() {
               </li>
             ))}
           </ul>
+
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={project.imageAlt ?? `${project.name} screenshot`}
+              loading="lazy"
+              className="h-full max-h-40 w-full rounded-sm border border-nb-border object-cover"
+            />
+          ) : null}
+
         </article>
       ))}
     </div>

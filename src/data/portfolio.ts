@@ -49,7 +49,11 @@ export type Project = {
   tags: string[];
   bullets: string[];
   link?: string;
+  /** Optional screenshot/thumbnail shown on the right of the card. */
+  image?: string;
+  imageAlt?: string;
 };
+
 
 export const projects: Project[] = [
   {
