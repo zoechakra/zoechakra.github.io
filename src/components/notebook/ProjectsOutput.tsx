@@ -11,6 +11,14 @@ export function ProjectsOutput() {
           className="grid gap-3 rounded-sm border border-nb-border bg-nb-cell p-4 sm:grid-cols-[minmax(9rem,15rem)_1fr] sm:gap-5"
         >
           <div className="flex h-full flex-col">
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={project.imageAlt ?? `${project.name} preview`}
+                loading="lazy"
+                className="mb-2 aspect-[16/9] w-full rounded-sm border border-nb-border object-cover"
+              />
+            ) : null}
             <h3 className="text-nb-accent">{project.name}</h3>
             <p className="mt-1 text-nb-muted">{project.dates}</p>
             <ul className="mt-2 flex flex-wrap gap-1">
