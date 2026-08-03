@@ -49,6 +49,16 @@ export function ProjectsOutput() {
               </li>
             ))}
           </ul>
+
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={project.imageAlt ?? `${project.name} screenshot`}
+              loading="lazy"
+              className="h-full max-h-40 w-full rounded-sm border border-nb-border object-cover"
+            />
+          ) : null}
+
         </article>
       ))}
     </div>
