@@ -13,7 +13,7 @@ export function Cell({
   const [open, setOpen] = useState(true);
 
   return (
-    <section className="mb-8">
+    <section id={`cell-${index}`} data-nb-cell className="mb-8 scroll-mt-28">
       <div className="flex gap-3 sm:gap-4">
         <div className="hidden w-14 shrink-0 items-start justify-end gap-1 pt-2.5 font-mono text-xs text-nb-accent sm:flex">
           {children ? (
