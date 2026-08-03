@@ -24,6 +24,6 @@ export default defineConfig({
       : { server: { entry: "server" } }),
   },
   ...(staticExport
-    ? { vite: { base: basePath }, nitro: { preset: "static" } }
+    ? { vite: { base: basePath }, nitro: false }
     : {}),
 });
