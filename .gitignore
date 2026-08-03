@@ -30,7 +30,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Editor/tooling metadata — kept local, not pushed
-.lovable/
-AGENTS.md
