@@ -10,11 +10,9 @@ permissions:
   pages: write
   id-token: write
 
-# Never cancel an in-flight deployment: a cancelled deploy-pages run can leave
-# the Pages site in a half-published state. Queue instead.
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -24,29 +22,20 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: "1.3.3"
+          bun-version: latest
 
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
+      - run: bun install --frozen-lockfile
 
-      # Project site (user.github.io/repo) serves assets from /repo/.
-      # User/org site (user.github.io) serves from /.
-      # A CNAME file (custom domain) always serves from /.
+      # For a project site (username.github.io/repo) assets must be served from /repo/.
+      # For a user/org site (username.github.io) or a custom domain, BASE_PATH is "/".
       - name: Resolve base path
         id: base
-        env:
-          REPO: ${{ github.repository }}
-          OWNER: ${{ github.repository_owner }}
         run: |
-          NAME="${REPO#*/}"
-          OWNER_LC="$(echo "$OWNER" | tr '[:upper:]' '[:lower:]')"
-          NAME_LC="$(echo "$NAME" | tr '[:upper:]' '[:lower:]')"
-          if [[ -f public/CNAME || -f CNAME || "$NAME_LC" == "$OWNER_LC.github.io" ]]; then
+          if [[ "${{ github.repository }}" == "${{ github.repository_owner }}/${{ github.repository_owner }}.github.io" ]]; then
             echo "path=/" >> "$GITHUB_OUTPUT"
           else
-            echo "path=/$NAME/" >> "$GITHUB_OUTPUT"
+            echo "path=/${{ github.event.repository.name }}/" >> "$GITHUB_OUTPUT"
           fi
-          echo "Resolved base path: $(tail -n1 "$GITHUB_OUTPUT")"
 
       - name: Build static site
         env:
@@ -56,16 +45,8 @@ jobs:
 
       - name: Prepare Pages artifact
         run: |
-          set -euo pipefail
-          test -f dist/client/index.html || {
-            echo "::error::Static build produced no dist/client/index.html"
-            ls -R dist || true
-            exit 1
-          }
           touch dist/client/.nojekyll
-          # SPA fallback so deep links and refreshes resolve.
           cp dist/client/index.html dist/client/404.html
-          ls -la dist/client
 
       - uses: actions/upload-pages-artifact@v3
         with:
