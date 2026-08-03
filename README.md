@@ -1,20 +1,12 @@
 # Jupyter Portfolio Lab
 
-Can you build a portfolio website that looks like a JupyterLab (seen in first pic above). Basically, there should be a cell saying return each section, and an answer section of the following: Terminal, About Me, Experiences, Projects, Contact. The second pic will give you more of an idea.
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/97752e33-c73f-492d-8816-95a597dbc0a1).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+A personal portfolio website styled as a JupyterLab notebook: an interactive
+terminal cell plus notebook cells for About Me, Internships, Projects, Resume,
+and Contact.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
 git clone <this-repository-url>
@@ -22,3 +14,8 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Deployment
+
+Pushing to `main` builds a static export and publishes it to GitHub Pages via
+`.github/workflows/deploy.yml`.
