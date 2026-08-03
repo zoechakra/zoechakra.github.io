@@ -1,5 +1,3 @@
-import airPollutantAsset from "@/assets/air-pollutant-forecaster.png.asset.json";
-
 export const profile = {
   name: "Zoe Chakraborty",
   subtitle: "Computer Science @ Johns Hopkins University",
@@ -51,11 +49,7 @@ export type Project = {
   tags: string[];
   bullets: string[];
   link?: string;
-  /** Optional screenshot/thumbnail shown on the right of the card. */
-  image?: string;
-  imageAlt?: string;
 };
-
 
 export const projects: Project[] = [
   {
@@ -75,9 +69,6 @@ export const projects: Project[] = [
       "Launched an interactive augmented reality web app translating forecasts into 3D molecular visualizations and real-time health risk assessments, achieving 10K+ site visits, a 4.9/5 user score, and $3,000 in funding.",
     ],
     link: "https://github.com/zoechakra",
-    image: airPollutantAsset.url,
-    imageAlt:
-      "Augmented reality view of a 3D nitrogen dioxide molecule model",
   },
   {
     name: "project_two",
