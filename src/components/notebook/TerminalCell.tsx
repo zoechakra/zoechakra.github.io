@@ -110,11 +110,13 @@ export function TerminalCell() {
               if (line.label !== undefined) {
                 if (line.stack) {
                   return (
-                    <div key={j} className={`mb-1 ${tone}`}>
-                      <div className="break-words">{line.label}</div>
-                      <div className="break-words pl-[2ch] text-nb-muted">
+                    <div key={j} className={`flex items-start gap-3 ${tone}`}>
+                      <span className="w-[40%] min-w-0 shrink-0 break-words">
+                        {line.label}
+                      </span>
+                      <span className="min-w-0 flex-1 break-words text-nb-muted">
                         {line.desc}
-                      </div>
+                      </span>
                     </div>
                   );
                 }
