@@ -10,8 +10,8 @@ import {
 
 export type Tone = "accent" | "muted" | "error";
 export type Line =
-  | { text: string; label?: never; desc?: never; tone?: Tone }
-  | { label: string; desc: string; text?: never; tone?: Tone };
+  | { text: string; label?: never; desc?: never; tone?: Tone; stack?: never }
+  | { label: string; desc: string; text?: never; tone?: Tone; stack?: boolean };
 
 const HELP: Line[] = [
   { text: "Available commands:", tone: "muted" },
