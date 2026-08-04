@@ -108,6 +108,16 @@ export function TerminalCell() {
             {entry.lines.map((line, j) => {
               const tone = toneClass[line.tone ?? ""] ?? "text-foreground";
               if (line.label !== undefined) {
+                if (line.stack) {
+                  return (
+                    <div key={j} className={`mb-1 ${tone}`}>
+                      <div className="break-words">{line.label}</div>
+                      <div className="break-words pl-[2ch] text-nb-muted">
+                        {line.desc}
+                      </div>
+                    </div>
+                  );
+                }
                 return (
                   <div key={j} className={`flex items-start gap-2 ${tone}`}>
                     <span className="w-[13ch] shrink-0 break-words sm:w-[21ch]">
