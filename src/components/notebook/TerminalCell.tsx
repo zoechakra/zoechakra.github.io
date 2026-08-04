@@ -110,11 +110,8 @@ export function TerminalCell() {
               if (line.label !== undefined) {
                 if (line.stack) {
                   return (
-                    <div
-                      key={j}
-                      className={`grid grid-cols-[minmax(0,40%)_minmax(0,1fr)] items-start gap-3 ${tone}`}
-                    >
-                      <span className="min-w-0 break-words">
+                    <div key={j} className={`flex items-start gap-3 ${tone}`}>
+                      <span className="w-[40%] min-w-0 shrink-0 break-words">
                         {line.label}
                       </span>
                       <span className="min-w-0 flex-1 break-words text-nb-muted">
