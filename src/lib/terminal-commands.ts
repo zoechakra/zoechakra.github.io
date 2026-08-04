@@ -47,6 +47,7 @@ function internshipLines(): Line[] {
   return internships.map((i) => ({
     label: i.company,
     desc: `${i.team} · ${i.dates}`,
+    stack: true,
   }));
 }
 
