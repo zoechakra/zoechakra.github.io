@@ -108,6 +108,14 @@ export function TerminalCell() {
             {entry.lines.map((line, j) => (
               <div
                 key={j}
+                style={
+                  line.hang
+                    ? {
+                        paddingLeft: `${line.hang}ch`,
+                        textIndent: `-${line.hang}ch`,
+                      }
+                    : undefined
+                }
                 className={`whitespace-pre-wrap break-words ${
                   toneClass[line.tone ?? ""] ?? "text-foreground"
                 }`}
@@ -115,6 +123,7 @@ export function TerminalCell() {
                 {line.text || "\u00a0"}
               </div>
             ))}
+
           </div>
         ))}
 
