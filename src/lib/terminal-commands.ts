@@ -42,32 +42,34 @@ function aboutLines(): Line[] {
   return [
     ...about.map((p) => ({ text: p })),
     { text: "" },
-    ...aboutFacts.map(([k, v]) => ({ text: `${k.padEnd(21)} ${v}` })),
+    ...aboutFacts.map(([k, v]) => ({ text: `${k.padEnd(21)} ${v}`, hang: 22 })),
   ];
 }
 
 function internshipLines(): Line[] {
   return internships.map((i) => ({
     text: `${i.company} — ${i.team} · ${i.dates}`,
+    hang: 2,
   }));
 }
 
 function projectLines(): Line[] {
   return projects.flatMap((p) => [
     { text: `${p.name}  (${p.dates})`, tone: "accent" as const },
-    ...p.bullets.map((b) => ({ text: `  - ${b}` })),
-    { text: `  [${p.tags.join(", ")}]`, tone: "muted" as const },
+    ...p.bullets.map((b) => ({ text: `  - ${b}`, hang: 4 })),
+    { text: `  [${p.tags.join(", ")}]`, tone: "muted" as const, hang: 3 },
     { text: "" },
   ]);
 }
 
 function contactLines(): Line[] {
   return [
-    { text: `Email:    ${contact.email}` },
-    { text: `LinkedIn: ${contact.linkedinLabel}` },
-    { text: `GitHub:   ${contact.githubLabel}` },
+    { text: `Email:    ${contact.email}`, hang: 10 },
+    { text: `LinkedIn: ${contact.linkedinLabel}`, hang: 10 },
+    { text: `GitHub:   ${contact.githubLabel}`, hang: 10 },
   ];
 }
+
 
 export const COMMANDS = [
   "help",
