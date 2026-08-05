@@ -8,24 +8,30 @@ import {
   resume,
 } from "@/data/portfolio";
 
-export type Line = { text: string; tone?: "accent" | "muted" | "error" };
+export type Line = {
+  text: string;
+  tone?: "accent" | "muted" | "error";
+  /** Hanging indent (in monospace chars) so wrapped text aligns with the description column. */
+  hang?: number;
+};
 
 const HELP: Line[] = [
   { text: "Available commands:", tone: "muted" },
-  { text: "  help                show this message" },
-  { text: "  about               who I am" },
-  { text: "  internships         where I've worked" },
-  { text: "  projects            what I've built" },
-  { text: "  resume              link to my resume" },
-  { text: "  contact             how to reach me" },
-  { text: "  ls                  list notebook sections" },
-  { text: "  whoami              current user" },
-  { text: "  open <target>       open linkedin | github | email | resume" },
-  { text: "  theme               toggle dark / light mode" },
-  { text: "  clear               clear the screen" },
+  { text: "  help                show this message", hang: 22 },
+  { text: "  about               who I am", hang: 22 },
+  { text: "  internships         where I've worked", hang: 22 },
+  { text: "  projects            what I've built", hang: 22 },
+  { text: "  resume              link to my resume", hang: 22 },
+  { text: "  contact             how to reach me", hang: 22 },
+  { text: "  ls                  list notebook sections", hang: 22 },
+  { text: "  whoami              current user", hang: 22 },
+  { text: "  open <target>       open linkedin | github | email | resume", hang: 22 },
+  { text: "  theme               toggle dark / light mode", hang: 22 },
+  { text: "  clear               clear the screen", hang: 22 },
   { text: "" },
   { text: "Tab completes commands; ↑/↓ walks history.", tone: "muted" },
 ];
+
 
 export const WELCOME: Line[] = [
   { text: `Last login: welcome to ${profile.name}'s portfolio.`, tone: "muted" },
@@ -36,32 +42,34 @@ function aboutLines(): Line[] {
   return [
     ...about.map((p) => ({ text: p })),
     { text: "" },
-    ...aboutFacts.map(([k, v]) => ({ text: `${k.padEnd(21)} ${v}` })),
+    ...aboutFacts.map(([k, v]) => ({ text: `${k.padEnd(21)} ${v}`, hang: 22 })),
   ];
 }
 
 function internshipLines(): Line[] {
   return internships.map((i) => ({
     text: `${i.company} — ${i.team} · ${i.dates}`,
+    hang: 2,
   }));
 }
 
 function projectLines(): Line[] {
   return projects.flatMap((p) => [
     { text: `${p.name}  (${p.dates})`, tone: "accent" as const },
-    ...p.bullets.map((b) => ({ text: `  - ${b}` })),
-    { text: `  [${p.tags.join(", ")}]`, tone: "muted" as const },
+    ...p.bullets.map((b) => ({ text: `  - ${b}`, hang: 4 })),
+    { text: `  [${p.tags.join(", ")}]`, tone: "muted" as const, hang: 3 },
     { text: "" },
   ]);
 }
 
 function contactLines(): Line[] {
   return [
-    { text: `Email:    ${contact.email}` },
-    { text: `LinkedIn: ${contact.linkedinLabel}` },
-    { text: `GitHub:   ${contact.githubLabel}` },
+    { text: `Email:    ${contact.email}`, hang: 10 },
+    { text: `LinkedIn: ${contact.linkedinLabel}`, hang: 10 },
+    { text: `GitHub:   ${contact.githubLabel}`, hang: 10 },
   ];
 }
+
 
 export const COMMANDS = [
   "help",
