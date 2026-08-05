@@ -10,8 +10,8 @@ import {
 
 export type Tone = "accent" | "muted" | "error";
 export type Line =
-  | { text: string; label?: never; desc?: never; tone?: Tone; stack?: never }
-  | { label: string; desc: string; text?: never; tone?: Tone; stack?: boolean };
+  | { text: string; label?: never; desc?: never; tone?: Tone }
+  | { label: string; desc: string; text?: never; tone?: Tone };
 
 const HELP: Line[] = [
   { text: "Available commands:", tone: "muted" },
@@ -47,7 +47,6 @@ function internshipLines(): Line[] {
   return internships.map((i) => ({
     label: i.company,
     desc: `${i.team} · ${i.dates}`,
-    stack: true,
   }));
 }
 

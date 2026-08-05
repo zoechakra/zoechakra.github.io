@@ -44,23 +44,23 @@ function Index() {
         <TerminalCell />
       </Cell>
 
-      <Cell index={2} source="zoe.about()">
+      <Cell index={2} source="portfolio.about()">
         <AboutOutput />
       </Cell>
 
-      <Cell index={3} source="zoe.internships()">
+      <Cell index={3} source="portfolio.internships()">
         <InternshipsOutput />
       </Cell>
 
-      <Cell index={4} source="zoe.projects()">
+      <Cell index={4} source="portfolio.projects()">
         <ProjectsOutput />
       </Cell>
 
-      <Cell index={5} source="zoe.resume()">
+      <Cell index={5} source="portfolio.resume()">
         <ResumeOutput />
       </Cell>
 
-      <Cell index={6} source="zoe.contact()">
+      <Cell index={6} source="portfolio.contact()">
         <ContactOutput />
       </Cell>
     </NotebookChrome>
