@@ -8,24 +8,21 @@ import {
   resume,
 } from "@/data/portfolio";
 
-export type Tone = "accent" | "muted" | "error";
-export type Line =
-  | { text: string; label?: never; desc?: never; tone?: Tone }
-  | { label: string; desc: string; text?: never; tone?: Tone };
+export type Line = { text: string; tone?: "accent" | "muted" | "error" };
 
 const HELP: Line[] = [
   { text: "Available commands:", tone: "muted" },
-  { label: "help", desc: "show this message" },
-  { label: "about", desc: "who I am" },
-  { label: "internships", desc: "where I've worked" },
-  { label: "projects", desc: "what I've built" },
-  { label: "resume", desc: "link to my resume" },
-  { label: "contact", desc: "how to reach me" },
-  { label: "ls", desc: "list notebook sections" },
-  { label: "whoami", desc: "current user" },
-  { label: "open <target>", desc: "open linkedin | github | email | resume" },
-  { label: "theme", desc: "toggle dark / light mode" },
-  { label: "clear", desc: "clear the screen" },
+  { text: "  help                show this message" },
+  { text: "  about               who I am" },
+  { text: "  internships         where I've worked" },
+  { text: "  projects            what I've built" },
+  { text: "  resume              link to my resume" },
+  { text: "  contact             how to reach me" },
+  { text: "  ls                  list notebook sections" },
+  { text: "  whoami              current user" },
+  { text: "  open <target>       open linkedin | github | email | resume" },
+  { text: "  theme               toggle dark / light mode" },
+  { text: "  clear               clear the screen" },
   { text: "" },
   { text: "Tab completes commands; ↑/↓ walks history.", tone: "muted" },
 ];
@@ -39,14 +36,13 @@ function aboutLines(): Line[] {
   return [
     ...about.map((p) => ({ text: p })),
     { text: "" },
-    ...aboutFacts.map(([k, v]) => ({ label: k, desc: v })),
+    ...aboutFacts.map(([k, v]) => ({ text: `${k.padEnd(21)} ${v}` })),
   ];
 }
 
 function internshipLines(): Line[] {
   return internships.map((i) => ({
-    label: i.company,
-    desc: `${i.team} · ${i.dates}`,
+    text: `${i.company} — ${i.team} · ${i.dates}`,
   }));
 }
 
@@ -61,12 +57,11 @@ function projectLines(): Line[] {
 
 function contactLines(): Line[] {
   return [
-    { label: "Email:", desc: contact.email },
-    { label: "LinkedIn:", desc: contact.linkedinLabel },
-    { label: "GitHub:", desc: contact.githubLabel },
+    { text: `Email:    ${contact.email}` },
+    { text: `LinkedIn: ${contact.linkedinLabel}` },
+    { text: `GitHub:   ${contact.githubLabel}` },
   ];
 }
-
 
 export const COMMANDS = [
   "help",

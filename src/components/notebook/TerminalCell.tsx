@@ -105,28 +105,16 @@ export function TerminalCell() {
                 <span className="text-foreground">{entry.prompt}</span>
               </div>
             )}
-            {entry.lines.map((line, j) => {
-              const tone = toneClass[line.tone ?? ""] ?? "text-foreground";
-              if (line.label !== undefined) {
-                return (
-                  <div key={j} className={`flex items-start gap-2 ${tone}`}>
-                    <span className="w-[13ch] shrink-0 break-words sm:w-[21ch]">
-                      {line.label}
-                    </span>
-                    <span className="min-w-0 flex-1 break-words">{line.desc}</span>
-                  </div>
-                );
-              }
-              return (
-                <div
-                  key={j}
-                  className={`whitespace-pre-wrap break-words pl-[2ch] -indent-[2ch] ${tone}`}
-                >
-                  {line.text || "\u00a0"}
-                </div>
-              );
-            })}
-
+            {entry.lines.map((line, j) => (
+              <div
+                key={j}
+                className={`whitespace-pre-wrap break-words ${
+                  toneClass[line.tone ?? ""] ?? "text-foreground"
+                }`}
+              >
+                {line.text || "\u00a0"}
+              </div>
+            ))}
           </div>
         ))}
 
